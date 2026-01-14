@@ -1,17 +1,22 @@
 !
 interface ethernet<IF_ID>
+    description MLAG Peer Link Member
     channel-group <PC_ID> mode active
     no shutdown
 !
 vlan <MLAG_VLAN>
+    name MLAG
     trunk group MLAGPEER
 !
 interface port-channel<PC_ID>
+    description MLAG Peer link
+    switchport
     switchport mode trunk
     switchport trunk group MLAGPEER
     no spanning-tree vlan-id <MLAG_VLAN>
+    no shutdown
 !
-interface vlan <MLAG_VLAN>
+interface vlan<MLAG_VLAN>
     no autostate
     ip address <IP_ADDR>
 !
@@ -19,5 +24,5 @@ mlag configuration
     local-interface vlan <MLAG_VLAN>
     peer-address <PEER_IP>
     peer-link port-channel<PC_ID>
-    domain-id <DOMAIN_ID>
+    domain-id <DOMAIN_ID>   !!MUST BE IDENTICAL ON BOTH PEERS
 !
