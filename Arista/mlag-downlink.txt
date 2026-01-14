@@ -1,0 +1,9 @@
+!
+interface ethernet<IF_ID>
+    channel-group <PC_ID> mode active
+    no shutdown
+!
+interface port-channel<PC_ID>
+    mlag <MLAG_DS_ID>
+    no shutdown
+!
