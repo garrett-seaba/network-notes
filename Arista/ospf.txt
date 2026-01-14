@@ -1,0 +1,9 @@
+!
+ip routing
+!
+router ospf 1
+    router-id <RID>
+    passive-interface default
+    no passive-interface ethernet<IF_ID>
+    network 0.0.0.0/0 area 0
+!
