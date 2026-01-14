@@ -1,0 +1,23 @@
+!
+interface ethernet<IF_ID>
+    channel-group <PC_ID> mode active
+    no shutdown
+!
+vlan <MLAG_VLAN>
+    trunk group MLAGPEER
+!
+interface port-channel<PC_ID>
+    switchport mode trunk
+    switchport trunk group MLAGPEER
+    no spanning-tree vlan-id <MLAG_VLAN>
+!
+interface vlan <MLAG_VLAN>
+    no autostate
+    ip address <IP_ADDR>
+!
+mlag configuration
+    local-interface vlan <MLAG_VLAN>
+    peer-address <PEER_IP>
+    peer-link port-channel<PC_ID>
+    domain-id <DOMAIN_ID>
+!
