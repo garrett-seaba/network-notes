@@ -1,0 +1,12 @@
+!
+vlan <VLAN_ID>
+!
+ip routing
+!
+ip virtual-router mac-address <VMAC_ADDR>
+!
+interface vlan<VLAN_ID>
+    ip address <IP_ADDR>
+    ip virtual-router address <VIP_ADDR>
+    no autostate
+!
