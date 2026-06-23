@@ -1,0 +1,12 @@
+!
+router bgp <ASN>
+    vlan-aware-bundle <bundle1>
+        rd <route-distinguisher>
+        route-target both <rt>
+        redistribute learned
+        vlan <vlan-range>
+    !
+    vlan-aware-bundle <bundle2>
+        ...
+    !
+!
