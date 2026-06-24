@@ -1,0 +1,18 @@
+interface Loopback0
+    ip address <lo_ipaddr_cidr>
+    node-segment ipv4 index 1
+    isis enable <isis_proc_id>
+!
+ip routing
+!
+mpls ip
+!
+router isis <isis_proc_id>
+    net <net_id>
+    router-id <lo_ipaddr>
+    is-type <isis_level>
+    !
+    address-family ipv4 unicast
+    !
+    segment-routing mpls
+        no shutdown

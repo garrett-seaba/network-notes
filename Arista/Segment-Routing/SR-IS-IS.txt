@@ -1,0 +1,24 @@
+ip routing  ! must be enabled
+mpls ip
+!
+router isis <isis_process_label>
+    segment-routing mpls
+        no shutdown
+!
+!   Node-SID configuration
+interface Loopback <lo-id>
+    ip address <ipaddr>
+    node-segment ipv4 index <index_node_sid>
+!
+!   Prefix-SID configuration
+router isis <isis_process_label>
+    segment-routing mpls
+        prefix-segment <prefix_ip> index <index_prefix_sid>     ! index must be unique
+!
+!   Proxy-Node-SID configuration
+router isis <isis_process_label>
+    segment-routing mpls
+        proxy-node-segment <proxy_seg_ip> index <index_proxy_sid>
+!
+!   Adjacency-SID Label Range
+mpls label range dynamic <start_label> <labels_reserved>
