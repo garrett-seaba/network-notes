@@ -9,6 +9,7 @@ ip routing vrf <INSTANCE>
 !
 interface <Interface>
     no switchport
+    no autostate    ! Important on SVIs
     vrf <INSTANCE>
     ip address <ipaddr>
 !
