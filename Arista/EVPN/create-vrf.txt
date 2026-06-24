@@ -1,0 +1,22 @@
+!
+vrf instance <INSTANCE>
+!
+ip routing vrf <INSTANCE>
+!
+!-------------------------------------------------
+! For each interface in the vrf do the following
+!-------------------------------------------------
+!
+interface <Interface>
+    no switchport
+    vrf <INSTANCE>
+    ip address <ipaddr>
+!
+!
+!
+!
+!-------------------------------------------------
+! Useful show commands
+!-------------------------------------------------
+! show vrf
+! show ip route vrf <INSTANCE>
