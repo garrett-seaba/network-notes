@@ -20,7 +20,10 @@ interface Loopback0
     isis passive
 !
 !
-!   Repeat the following for each peer interface, configure /31 subnets
+!----------------------------------------------------
+! Repeat the following for each peer interface, 
+! configure /31 subnets
+!----------------------------------------------------
 !
 interface Ethernet<Ethernet_ID>
     no switchport
@@ -29,3 +32,14 @@ interface Ethernet<Ethernet_ID>
     isis circuit-type level-2
     isis network point-to-point
 !
+!
+!
+!----------------------------------------------------
+! Useful show commands:
+!----------------------------------------------------
+! show isis neighbors
+! show isis database level-2 detail
+! show isis database traffic-engineering
+! show mpls lfib route
+! show mpls segment-routing bindings
+
