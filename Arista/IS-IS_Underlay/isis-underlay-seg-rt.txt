@@ -1,0 +1,31 @@
+!
+ip routing
+!
+mpls ip
+!
+router isis UNDERLAY
+    net <NET_id>        ! find is-is net id best practices
+    router-id <Lo0 IP>
+    is-type level-2
+    !
+    address-family ipv4 unicast
+    !
+    segment-routing mpls
+        no shutdown
+!
+interface Loopback0
+    ip address <Lo0 IP>/32
+    node-segment ipv4 index <Node-SID>
+    isis enable UNDERLAY
+    isis passive
+!
+!
+!   Repeat the following for each peer interface, configure /31 subnets
+!
+interface Ethernet<Ethernet_ID>
+    no switchport
+    ip address <slash31_subnet>/31
+    isis enable UNDERLAY
+    isis circuit-type level-2
+    isis network point-to-point
+!
