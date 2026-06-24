@@ -1,0 +1,21 @@
+ip routing
+!
+mpls ip
+!
+router isis <proc_label>
+    net <[AFI][Area ID][System ID][NSEL]>   ! AFI almost always 49, NSEL always 0 for router
+    router-id ipv4 <Loopback_IP>
+    is-type level-2
+    redistribute connected
+    redistribute static
+    !
+    address-family ipv4 unicast
+    !
+    segment-routing mpls
+        no shutdown
+!
+interface Loopback0
+    ip address <Loopback_IP>/<CIDR_mask>
+    node-segment ipv4 index <Node-SID>
+    isis enable <proc_label>
+!
