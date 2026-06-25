@@ -10,6 +10,7 @@ ip extcommunity-list <VRF1-RT> permit rt <vrf-1-rt>
 !
 ip extcommunity-list <VRF2-RT> permit rt <vrf-2-rt>
 !
+!
 route-map <VRF1-IMPORT> permit 10
     match extcommunity <VRF1-RT>
 !
@@ -25,7 +26,16 @@ route-map <VRF2-IMPORT> permit 20
     match extcommunity <VRF1-RT>
     match ip address prefix-list <VRF1-ALLOWED>
 !
-
+!
+ip prefix-list <VRF1-ALLOWED>
+    seq 10 allow <allowed-subnet>
+    ! add as needed
+!
+ip prefix-list <VRF2-ALLOWED>
+    seq 10 allow <allowed-subnet>
+    ! add as needed
+!
+!
 router bgp <ASN>
     vrf <vrf-proc-1>
         route-target import evpn <vrf-2-rt>
