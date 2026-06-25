@@ -1,0 +1,38 @@
+!
+!---------------------------------------------------
+! This example shows only two PEs, but this can be
+! applied to many other PEs simply by importing the
+! neccesary route-target. Note that route-targets
+! must be imported in both directions!
+!---------------------------------------------------
+!
+ip extcommunity-list <VRF1-RT> permit rt <vrf-1-rt>
+!
+ip extcommunity-list <VRF2-RT> permit rt <vrf-2-rt>
+!
+route-map <VRF1-IMPORT> permit 10
+    match extcommunity <VRF1-RT>
+!
+route-map <VRF1-IMPORT> permit 20
+    match extcommunity <VRF2-RT>
+    match ip address prefix-list <VRF2-ALLOWED>
+!
+!
+route-map <VRF2-IMPORT> permit 10
+    match extcommunity <VRF2-RT>
+!
+route-map <VRF2-IMPORT> permit 20
+    match extcommunity <VRF1-RT>
+    match ip address prefix-list <VRF1-ALLOWED>
+!
+
+router bgp <ASN>
+    vrf <vrf-proc-1>
+        route-target import evpn <vrf-2-rt>
+        route-target import evpn route-map <VRF1-IMPORT>
+!
+router bgp <ASN>
+    vrf <vrf-proc-2>
+        route-target import evpn <vrf-1-rt>
+        route-target import evpn route-map <VRF2-IMPORT>
+!
