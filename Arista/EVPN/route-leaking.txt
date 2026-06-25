@@ -1,9 +1,16 @@
 !
 !---------------------------------------------------
-! This example shows only two PEs, but this can be
-! applied to many other PEs simply by importing the
+! This example shows only two vrfs, but this can be
+! applied to many other vrfs simply by importing the
 ! neccesary route-target. Note that route-targets
 ! must be imported in both directions!
+!
+! NOTE: you can filter to leak specific hosts with
+! prefix-list, but they must match advertised 
+! prefixes exactly. This can be done using 
+! `redistribute attached-hosts`. You can further
+! filter the redistribution itsef using route maps
+! and prefix lists if there are many hosts.
 !---------------------------------------------------
 !
 ip extcommunity-list <VRF1-RT> permit rt <vrf-1-rt>
