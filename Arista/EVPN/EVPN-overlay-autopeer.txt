@@ -1,0 +1,22 @@
+!
+router bgp 65000
+    neighbor EVPN-PEERS peer group
+    neighbor EVPN-PEERS update-source Loopback0
+    neighbor EVPN-PEERS send-community
+    neighbor EVPN-PEERS maximum-routes 0
+    neighbor EVPN-PEERS remote-as 65000
+    bgp listen range <peer-ip-subnet>/24 peer-group EVPN-PEERS peer-filter Peer-AS-Range
+    !
+    address-family evpn
+        neighbor EVPN-PEERS activate
+!
+peer-filter Peer-AS-Range
+    match as-range 65000-65000 result accept
+!
+!
+!---------------------------------------------
+! Useful show commands
+!---------------------------------------------
+!
+! show bgp evpn summary
+! 
