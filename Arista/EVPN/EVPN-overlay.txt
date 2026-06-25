@@ -1,5 +1,6 @@
 !
 router bgp 65000
+    no bgp default ipv4-unicast
     neighbor EVPN-PEERS peer group
     neighbor EVPN-PEERS update-source Loopback0
     neighbor EVPN-PEERS send-community
@@ -9,6 +10,7 @@ router bgp 65000
     !   Add more peers as needed
     !
     address-family evpn
+        neighbor default encapsulation mpls
         neighbor EVPN-PEERS activate
 !
 !---------------------------------------------
