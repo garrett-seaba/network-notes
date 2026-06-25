@@ -1,0 +1,10 @@
+!
+router bgp <ASN>
+    vrf <vrf-proc>
+        rd <route-distinguisher>
+        route-target import evpn <route-target>
+        route-target export evpn <route-target>
+        redistribute connected
+        redistribute attached-hosts
+    ! Add more vrf configurations as needed
+!   
