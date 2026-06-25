@@ -28,11 +28,11 @@ route-map <VRF2-IMPORT> permit 20
 !
 !
 ip prefix-list <VRF1-ALLOWED>
-    seq 10 allow <allowed-subnet>
+    seq 10 permit <allowed-subnet>
     ! add as needed
 !
 ip prefix-list <VRF2-ALLOWED>
-    seq 10 allow <allowed-subnet>
+    seq 10 permit <allowed-subnet>
     ! add as needed
 !
 !
