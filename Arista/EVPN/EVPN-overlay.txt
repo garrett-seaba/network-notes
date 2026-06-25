@@ -1,0 +1,19 @@
+!
+router bgp 65000
+    neighbor EVPN-PEERS peer group
+    neighbor EVPN-PEERS update-source Loopback0
+    neighbor EVPN-PEERS send-community
+    neighbor EVPN-PEERS maximum-routes 0
+    neighbor EVPN-PEERS remote-as 65000
+    neighbor <peer-ip> peer group EVPN-PEERS
+    !   Add more peers as needed
+    !
+    address-family evpn
+        neighbor EVPN-PEERS activate
+!
+!---------------------------------------------
+! Useful show commands
+!---------------------------------------------
+!
+! show bgp evpn summary
+! 
