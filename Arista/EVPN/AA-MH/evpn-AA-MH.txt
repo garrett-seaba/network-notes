@@ -18,4 +18,5 @@ end
 !
 ! show bgp evpn route-type auto-discovery
 ! show bgp evpn route-type ethernet-segment
+! show bgp evpn instance
     
