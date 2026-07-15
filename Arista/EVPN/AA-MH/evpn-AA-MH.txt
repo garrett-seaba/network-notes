@@ -1,0 +1,21 @@
+!
+Interface Port-Channel<PC-ID>
+    lacp system-id<system-id>   ! shared between EVPN peers with port channel
+    !
+    evpn ethernet-segment
+        identifier <esi>        ! must match on both peers, must start with 00 (10 byte)
+        route-target import <es-import-rt>
+!
+Interface Ethernet<Eth-ID>
+    channel-group <PC-ID> mode active
+!
+end
+!
+!
+!-------------------------------------------------
+! Show Commands
+!-------------------------------------------------
+!
+! show bgp evpn route-type auto-discovery
+! show bgp evpn route-type ethernet-segment
+    
