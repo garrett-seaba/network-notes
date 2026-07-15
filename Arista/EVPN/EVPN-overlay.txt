@@ -10,7 +10,7 @@ router bgp 65000
     !   Add more peers as needed
     !
     address-family evpn
-        neighbor default encapsulation mpls
+        neighbor default encapsulation mpls next-hop-self Loopback0
         neighbor EVPN-PEERS activate
 !
 !---------------------------------------------
