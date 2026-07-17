@@ -1,0 +1,15 @@
+!
+management api http-commands
+    no shutdown
+!
+!------------------------------------
+! Notes
+!------------------------------------
+! By default it runs on https (443)
+! http can be enabled with the following:
+!   protocol http
+!
+! By default it runs in the "Default" vrf
+! Recommended to activate in the "mgmt" vrf
+!
+! eAPI is a JSON-RPC API
