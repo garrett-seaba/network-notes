@@ -19,4 +19,10 @@ end
 ! show bgp evpn route-type auto-discovery
 ! show bgp evpn route-type ethernet-segment
 ! show bgp evpn instance
+!
+!
+! **IMPORTANT**
+! Validate the following line is added to EVPN neighbors
+! next-hop-self
+! without this EVPN will not advertise type 1-4 routes
     
