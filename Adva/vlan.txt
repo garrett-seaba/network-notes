@@ -1,0 +1,7 @@
+interface vlan vif5
+    description Example Management vlan
+    tag 5
+    ports 1,2,3     ! physical ethernet ports associated
+    ! Can also assign management
+    management ssh 0.0.0.0/0
+    management telnet 0.0.0.0/0
